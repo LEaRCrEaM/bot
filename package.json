@@ -1,27 +1,13 @@
 {
   "name": "discord-bot",
   "version": "1.0.0",
-  "description": "A Discord bot with WebSocket and additional features",
+  "description": "My Discord bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "discord.js": "^13.15.1",
-    "ws": "^8.5.0",
-    "express": "^4.17.1",
-    "puppeteer": "^19.0.0",
-    "node-fetch": "^3.0.0",
-    "discord-logs": "^2.0.0",
-    "https": "^1.0.0"
-  },
-  "devDependencies": {
-    "eslint": "^8.0.0",
-    "nodemon": "^2.0.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "author": "",
-  "license": "ISC"
-}
+    "discord.js": "^14.13.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
