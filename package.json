@@ -13,7 +13,6 @@
     "puppeteer": "^19.0.0",
     "node-fetch": "^3.0.0",
     "discord-logs": "^2.0.0",
-    "discord-image-generation": "^2.0.0",
     "https": "^1.0.0"
   },
   "devDependencies": {
