@@ -1,6 +1,8 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const express = require('express');
+const puppeteer = require('puppeteer');
+const path = require('path');
 const fetch = require('node-fetch');
 
 const client = new Client({
@@ -55,6 +57,18 @@ client.on('messageCreate', message => {
 
 client.login(process.env.DISCORD_TOKEN);
 
+(async () => {
+    var pathToExtension = path.join(__dirname, 'extension');
+    const browser = await puppeteer.launch({
+      headless: false,
+      args: [
+        `--disable-extensions-except=${pathToExtension}`,
+        `--load-extension=${pathToExtension}`
+      ]
+    });
+    const page = await browser.newPage();
+    await page.goto('https://tankionline.com/play/');
+})();
 
 const app = express();
 app.get('/', (req, res) => res.send('Bot is running!'));
