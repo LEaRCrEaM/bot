@@ -3,19 +3,6 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const express = require('express');
 const path = require('path');
 const fetch = require('node-fetch');
-const fs = require('fs');
-
-const chromePaths = [
-    '/usr/bin/chromium-browser',
-    '/usr/bin/chromium',
-    '/usr/bin/google-chrome'
-];
-
-let executablePath = chromePaths.find(path => fs.existsSync(path));
-
-if (!executablePath) {
-    throw new Error('No Chromium executable found.');
-};
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]
@@ -90,11 +77,9 @@ var page;
   const pathToExtension = path.join(__dirname, 'extension');
   const browser = await puppeteer.launch({
     headless: 'new',
-    executablePath: executablePath,
     args: [
       `--disable-extensions-except=${pathToExtension}`,
-      `--load-extension=${pathToExtension}`,
-      '--no-sandbox', '--disable-setuid-sandbox'
+      `--load-extension=${pathToExtension}`
     ]
   });
   const pages = await browser.pages();
