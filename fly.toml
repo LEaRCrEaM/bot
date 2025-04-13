@@ -1,0 +1,11 @@
+app = "bot"
+primary_region = "iad"
+
+[env]
+NODE_ENV = "production"
+
+[experimental]
+auto_rollback = true
+
+[build]
+  dockerfile = "Dockerfile"
