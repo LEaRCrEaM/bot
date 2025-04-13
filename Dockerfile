@@ -1,6 +1,6 @@
-FROM node:18-slim
+FROM node:20-slim
 
-# Install Chromium dependencies
+# Install dependencies for Puppeteer
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -19,22 +19,21 @@ RUN apt-get update && apt-get install -y \
     libxdamage1 \
     libxrandr2 \
     xdg-utils \
-    libu2f-udev \
-    libvulkan1 \
-    --no-install-recommends && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    libgbm-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Set working dir
+# Create app directory
 WORKDIR /app
 
-# Copy files
-COPY . .
-
-# Install dependencies
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Expose the port if needed (optional)
+# Copy the rest of the code
+COPY . .
+
+# Expose port if needed (like if using Express)
 EXPOSE 3000
 
-# Start the bot
-CMD ["node", "index.js"]
+# Run your app
+CMD ["npm", "start"]
