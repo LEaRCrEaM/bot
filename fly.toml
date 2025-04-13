@@ -1,15 +1,13 @@
-app = "bot"
+app = "bot" # change this to your actual Fly app name
+
+[build]
+  image = "Dockerfile"
 
 [env]
   NODE_ENV = "production"
 
-[build]
-  dockerfile = "Dockerfile"
-
-[[services]]
-  internal_port = 8080
-  protocol = "tcp"
-
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
