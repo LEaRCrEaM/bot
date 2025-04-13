@@ -60,7 +60,7 @@ client.on('messageCreate', async message => {
 
 client.login(process.env.DISCORD_TOKEN);
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 //const path = require('path');
 
 async function wait(ms) {
