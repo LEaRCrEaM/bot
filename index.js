@@ -77,9 +77,11 @@ var page;
   const pathToExtension = path.join(__dirname, 'extension');
   const browser = await puppeteer.launch({
     headless: 'new',
+    executablePath: '/usr/bin/google-chrome',
     args: [
       `--disable-extensions-except=${pathToExtension}`,
-      `--load-extension=${pathToExtension}`
+      `--load-extension=${pathToExtension}`,
+      '--no-sandbox', '--disable-setuid-sandbox'
     ]
   });
   const pages = await browser.pages();
