@@ -61,7 +61,7 @@ client.on('messageCreate', async message => {
 client.login(process.env.DISCORD_TOKEN);
 
 const puppeteer = require('puppeteer');
-const path = require('path');
+//const path = require('path');
 
 async function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
